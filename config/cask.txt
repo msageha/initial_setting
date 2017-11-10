@@ -1,0 +1,4 @@
+slack
+sublime
+dropbox
+google-chrome
