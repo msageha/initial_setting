@@ -12,7 +12,7 @@ git config --global user.name ${git_username}
 git config --global user.email ${git_email}
 
 echo "Vim setting"
-cp ../vim/vimrc ~/.vimrc
+cp ../vimrc ~/.vimrc
 echo "colors"
 mkdir -p ~/.vim/colors
 curl https://raw.githubusercontent.com/dracula/vim/master/colors/dracula.vim -o ~/.vim/colors/dracula.vim
