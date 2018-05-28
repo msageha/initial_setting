@@ -1,6 +1,4 @@
-syntax on
-color dracula
-
+" setting
 "文字コードをUFT-8に設定
 set fenc=utf-8
 " バックアップファイルを作らない
@@ -13,7 +11,6 @@ set autoread
 set hidden
 " 入力中のコマンドをステータスに表示する
 set showcmd
-
 
 " 見た目系
 " 行番号を表示
@@ -38,10 +35,11 @@ set wildmode=list:longest
 nnoremap j gj
 nnoremap k gk
 
-
 " Tab系
+" 不可視文字を可視化(半角スペースが「.」と表示)
+set list listchars=trail:.
 " 不可視文字を可視化(タブが「▸-」と表示される)
-set list listchars=tab:\▸\-
+set list listchars=tab:\▸\-,trail:.
 " Tab文字を半角スペースにする
 set expandtab
 " 行頭以外のTab文字の表示幅（スペースいくつ分）
@@ -49,6 +47,9 @@ set tabstop=2
 " 行頭でのTab文字の表示幅
 set shiftwidth=2
 
+" 全角スペースの背景を赤に変更
+autocmd Colorscheme * highlight FullWidthSpace ctermbg=DarkRed
+autocmd VimEnter * match FullWidthSpace /　/
 
 " 検索系
 " 検索文字列が小文字の場合は大文字小文字を区別なく検索する
@@ -61,3 +62,29 @@ set incsearch
 set wrapscan
 " 検索語をハイライト表示
 set hlsearch
+
+" NeoBundle周りの設定
+
+" Required:
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+  call neobundle#begin(expand('~/.vim/bundle'))
+endif
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Add or remove your Bundles here:
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
+
+" Required:
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" カラースキームの設定
+colorscheme dracula
+syntax on

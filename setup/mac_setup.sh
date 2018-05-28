@@ -13,3 +13,6 @@ cat ${brew_list} | while read line
 do
   brew install ${line}
 done
+
+#後から設定しないといけないもの
+git clone https://github.com/dracula/iterm.git ../
