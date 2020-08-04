@@ -1,14 +1,19 @@
-alias chrome='open -a /Applications/Google\ Chrome.app/'
-alias subl='open -a /Applications/Sublime\ Text.app/'
+alias vsc='open -a /Applications/Visual\ Studio\ Code.app'
+alias chrome='open -a /Applications/Google\ Chrome.app'
+alias ls='ls -G'
 
-set -x PATH /usr/local/mecab/bin $PATH
+# For pyenv
+set -x PYENV_ROOT "$HOME/.pyenv"
+set -x PATH "$PYENV_ROOT/bin" "$PATH"
+eval (pyenv init - | source)
 
-set -x PYENV_ROOT $HOME/.pyenv
-set -x RBENV_ROOT $HOME/.rbenv
-set -x PATH $PYENV_ROOT/bin $RBENV_ROOT/bin $PATH
-. (pyenv init - | psub)
-. (rbenv init - | psub)
+export PATH
+export LESS='-R'
 
-set -x NVM_DIR $HOME/.nvm
-[ -s "$NVM_DIR/nvm.sh" ]
-sh $NVM_DIR/nvm.sh # This loads nvm
+set fish_plugins theme peco
+
+# peco
+function fish_user_key_bindings
+  bind \cr peco_select_history # Bind for peco select history to Ctrl+R
+  bind \cf peco_change_directory # Bind for peco change directory to Ctrl+F
+end

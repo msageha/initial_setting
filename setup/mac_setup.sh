@@ -14,5 +14,19 @@ do
   brew install ${line}
 done
 
-#後から設定しないといけないもの
-git clone https://github.com/dracula/iterm.git ../
+echo "Initialize for fish"
+curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+
+echo "Install for powerline fonts"
+# clone
+git clone https://github.com/powerline/fonts.git --depth=1
+# install
+cd fonts
+./install.sh
+# clean-up a bit
+cd ..
+rm -rf fonts
+
+# #後から設定しないといけないもの
+# git clone https://github.com/dracula/iterm.git ../
+
